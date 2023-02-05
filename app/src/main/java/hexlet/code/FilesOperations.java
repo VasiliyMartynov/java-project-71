@@ -14,6 +14,7 @@ public class FilesOperations {
         if (!Files.exists(path)) {
             throw new Exception("File '" + path + "' does not exist");
         }
+
         String json = Files.readString(path);
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(json, new TypeReference<Map<String, Object>>() { });

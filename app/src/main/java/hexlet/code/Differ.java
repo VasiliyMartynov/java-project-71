@@ -15,10 +15,10 @@ public class Differ {
         var file1 = readFile(filePath1);
         var file2 = readFile(filePath2);
         TreeSet<String> keys = getKeys(file1, file2);
-        if (format == null) {
-            return showDefaultView(file1, file2, keys);
-        }
-        return "";
+        //if (format == null) {
+        return showDefaultView(file1, file2, keys);
+        //}
+        //return "";
     }
 
     public static TreeSet<String> getKeys(Map<String, Object> data1, Map<String, Object> data2) {
