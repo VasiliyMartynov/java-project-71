@@ -52,6 +52,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    jacoco {
+        destinationFile = layout.buildDirectory.file('jacoco/jacocoTest.exec').get().asFile
+        classDumpDir = layout.buildDirectory.dir('jacoco/classpathdumps').get().asFile
+    }
 }
 
 testlogger {
