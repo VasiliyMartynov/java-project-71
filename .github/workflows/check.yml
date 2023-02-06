@@ -1,4 +1,4 @@
-name: check
+name: Java CI
 
 on:
   - push
@@ -23,8 +23,8 @@ jobs:
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-          JACOCO_SOURCE_PATH: src/main/java/app
+           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+           JACOCO_SOURCE_PATH: src/main/java/App
         with:
-          coverageCommand: make report
-          coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+           coverageCommand: make report
+           coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
