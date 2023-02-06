@@ -1,7 +1,7 @@
 report:
-	make -C app report
+	./gradlew jacocoTestReport
 
 run-dist:
-	./build/install/app/bin/app file1.json file2.json
+	tefile2.json
 
 .PHONY: build
