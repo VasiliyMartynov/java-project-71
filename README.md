@@ -1,7 +1,7 @@
 # README.md
 [![Actions Status](https://github.com/VasiliyMartynov/java-project-71/workflows/hexlet-check/badge.svg)](https://github.com/VasiliyMartynov/java-project-71/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2407cace64ecaa7a37c7/maintainability)](https://codeclimate.com/github/VasiliyMartynov/java-project-71/maintainability)
-[![vasiliy-check](https://github.com/VasiliyMartynov/java-project-71/actions/workflows/vasiliy's-check.yml/badge.svg?event=push)](https://github.com/VasiliyMartynov/java-project-71/actions/workflows/vasiliy's-check.yml)
+[![Java CI](https://github.com/VasiliyMartynov/java-project-71/actions/workflows/check.yml/badge.svg)](https://github.com/VasiliyMartynov/java-project-71/actions/workflows/check.yml)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2407cace64ecaa7a37c7/test_coverage)](https://codeclimate.com/github/VasiliyMartynov/java-project-71/test_coverage)
 ### makefile commands
 ### START
