@@ -4,20 +4,53 @@ import java.util.Map;
 import java.util.TreeSet;
 
 public class Views {
-    public static String showDefaultView(Map<String, Object> d1, Map<String, Object> d2, TreeSet<String> diff) {
+    public static String showStylishView(Map<String, Object> map1,
+                                         Map<String, Object> map2,
+                                         TreeSet<String> uniqueKeys) {
         StringBuilder result = new StringBuilder();
         result.append("{\n");
 
-        for (String key : diff) {
-            if (d2.containsKey(key) && !d1.containsKey(key)) { //added
-                result.append("+ ").append(key).append(": ").append(d2.get(key)).append("\n");
-            } else if (d1.containsKey(key) && !d2.containsKey(key)) { //deleted
-                result.append("- ").append(key).append(": ").append(d1.get(key)).append("\n");
-            } else if (d1.containsKey(key) && d2.containsKey(key) && !d1.get(key).equals(d2.get(key))) { //changed
-                result.append("- ").append(key).append(": ").append(d1.get(key)).append("\n");
-                result.append("+ ").append(key).append(": ").append(d2.get(key)).append("\n");
-            } else if (d1.containsKey(key) && d2.containsKey(key) && d1.get(key).equals(d2.get(key))) { // unchanged
-                result.append("  ").append(key).append(": ").append(d1.get(key)).append("\n");
+        for (String key : uniqueKeys) {
+                //value  added
+            if (map2.containsKey(key) && !map1.containsKey(key)) {
+                result
+                        .append("+ ")
+                        .append(key)
+                        .append(": ")
+                        .append(map2.get(key))
+                        .append("\n");
+                //value was deleted
+            } else if (map1.containsKey(key) && !map2.containsKey(key)) {
+                result
+                        .append("- ")
+                        .append(key)
+                        .append(": ")
+                        .append(map1.get(key))
+                        .append("\n");
+                //value was changed
+            } else if (map1.containsKey(key) && map2.containsKey(key)
+                    && !map1.get(key).equals(map2.get(key))) {
+                result
+                        .append("- ")
+                        .append(key)
+                        .append(": ")
+                        .append(map1.get(key))
+                        .append("\n");
+                result
+                        .append("+ ")
+                        .append(key)
+                        .append(": ")
+                        .append(map2.get(key))
+                        .append("\n");
+                //value was unchanged
+            } else if (map1.containsKey(key) && map2.containsKey(key)
+                    && map1.get(key).equals(map2.get(key))) {
+                result
+                        .append("  ")
+                        .append(key)
+                        .append(": ")
+                        .append(map1.get(key))
+                        .append("\n");
             }
         }
 

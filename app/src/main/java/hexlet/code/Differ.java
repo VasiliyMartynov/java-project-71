@@ -4,7 +4,7 @@ import java.util.TreeSet;
 import java.util.Map;
 
 import static hexlet.code.FilesOperations.readFile;
-import static hexlet.code.Views.showDefaultView;
+import static hexlet.code.Views.showStylishView;
 
 public class Differ {
     public static void generate(String filePath1, String filePath2, String format) throws Exception {
@@ -16,7 +16,7 @@ public class Differ {
         var file2 = readFile(filePath2);
         TreeSet<String> keys = getKeys(file1, file2);
         //if (format == null) {
-        return showDefaultView(file1, file2, keys);
+        return showStylishView(file1, file2, keys);
         //}
         //return "";
     }
