@@ -3,22 +3,15 @@ package hexlet.code;
 import java.util.TreeSet;
 import java.util.Map;
 
-import static hexlet.code.FilesOperations.readFile;
+import static hexlet.code.Parser.parse;
 import static hexlet.code.Views.showStylishView;
 
 public class Differ {
-    public static void generate(String filePath1, String filePath2, String format) throws Exception {
-        System.out.println(generateDiffReport(filePath1, filePath2, format));
-    }
-
-    static String generateDiffReport(String filePath1, String filePath2, String format) throws Exception {
-        var file1 = readFile(filePath1);
-        var file2 = readFile(filePath2);
+    public static String generate(String filePath1, String filePath2, String format) throws Exception {
+        var file1 = parse(filePath1);
+        var file2 = parse(filePath2);
         TreeSet<String> keys = getKeys(file1, file2);
-        //if (format == null) {
         return showStylishView(file1, file2, keys);
-        //}
-        //return "";
     }
 
     public static TreeSet<String> getKeys(Map<String, Object> data1, Map<String, Object> data2) {
