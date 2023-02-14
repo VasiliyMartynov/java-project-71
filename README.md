@@ -10,3 +10,5 @@ run-dist:
 ```
 ### Asciinema resords
 [Step 5](https://asciinema.org/a/kRfCHdBzJtawXH4kWXv9Yplof)
+
+[Step 7](https://asciinema.org/a/47qDuOz24u3HSvIdsIvWSbmqC)
