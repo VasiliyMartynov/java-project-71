@@ -16,3 +16,5 @@ run-dist:
 [Step 8](https://asciinema.org/a/YkCxgyXpzOIjKjrdwjLHKiYH7)
 
 [Step 9](https://asciinema.org/a/Y68eScRCy5VWmXQsBiWnoVDTA)
+
+[Step 10](https://asciinema.org/a/TsGDr9a3lX4Ms78i2QI3lpYlb)
