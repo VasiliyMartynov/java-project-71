@@ -14,7 +14,15 @@ public class Parser {
         String fileExtention = getFileExtention(filePath);
         ObjectMapper mapper = getMapper(fileExtention);
         assert mapper != null;
-        return mapper.readValue(getFileData(filePath), new TypeReference<>() { });
+        Map<String, Object> result  = mapper.readValue(getFileData(filePath), new TypeReference<>() { });
+        result.entrySet()
+                .forEach(e -> {
+                    if (e.getValue() == null) {
+                        e.setValue("null");
+                    }
+                });
+        return result;
+
     }
 
     static ObjectMapper getMapper(String s) {
