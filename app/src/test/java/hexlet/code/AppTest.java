@@ -12,7 +12,7 @@ public class AppTest {
     public void differJSONTestOK() throws Exception {
         String expected = """
                 {
-                  chars1: [a, b, c]
+                    chars1: [a, b, c]
                   - chars2: [d, e, f]
                   + chars2: false
                   - checked: false
@@ -23,7 +23,7 @@ public class AppTest {
                   + id: null
                   - key1: value1
                   + key2: value2
-                  numbers1: [1, 2, 3, 4]
+                    numbers1: [1, 2, 3, 4]
                   - numbers2: [2, 3, 4, 5]
                   + numbers2: [22, 33, 44, 55]
                   - numbers3: [3, 4, 5]
@@ -106,7 +106,7 @@ public class AppTest {
     public void differYAMLTestOK() throws Exception {
         String expected = """
                 {
-                  chars1: [a, b, c]
+                    chars1: [a, b, c]
                   - chars2: [d, e, f]
                   + chars2: false
                   - checked: false
@@ -117,7 +117,7 @@ public class AppTest {
                   + id: null
                   - key1: value1
                   + key2: value2
-                  numbers1: [1, 2, 3, 4]
+                    numbers1: [1, 2, 3, 4]
                   + numbers2: [22, 33, 44, 55]
                   - numbers2": [2, 3, 4, 5]
                   - numbers3: [3, 4, 5]
@@ -249,7 +249,7 @@ public class AppTest {
     public void differFormatNull() throws Exception {
         String expected = """
                 {
-                  chars1: [a, b, c]
+                    chars1: [a, b, c]
                   - chars2: [d, e, f]
                   + chars2: false
                   - checked: false
@@ -260,7 +260,7 @@ public class AppTest {
                   + id: null
                   - key1: value1
                   + key2: value2
-                  numbers1: [1, 2, 3, 4]
+                    numbers1: [1, 2, 3, 4]
                   - numbers2: [2, 3, 4, 5]
                   + numbers2: [22, 33, 44, 55]
                   - numbers3: [3, 4, 5]
