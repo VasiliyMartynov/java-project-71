@@ -30,9 +30,9 @@ public class Plain {
                 view
                         .append("Property '")
                         .append(key)
-                        .append("' was added with value: '")
+                        .append("' was added with value: ")
                         .append(map2.get(key).toString())
-                        .append("'\n");
+                        .append("\n");
                 //if value was deleted
             } else if (map1.containsKey(key) && !map2.containsKey(key)) {
                 view
