@@ -12,6 +12,9 @@ public class Differ {
         var file1 = parse(filePath1);
         var file2 = parse(filePath2);
         TreeSet<String> keys = getKeys(file1, file2);
+        if (format.equals(null)) {
+            generate(filePath1,filePath2);
+        }
         return getView(file1, file2, keys, format);
     }
 
