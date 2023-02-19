@@ -1,11 +1,5 @@
 .DEFAULT_GOAL := build-run
 
-report:
-	./gradlew jacocoTestReport
-
-run-dist:
-	./build/install/app/bin/app file1.json file2.json
-
 clean:
 	./gradlew clean
 
@@ -14,6 +8,9 @@ build:
 
 install:
 	./gradlew clean install
+
+run-dist:
+	./build/install/app/bin/app
 
 run:
 	./gradlew run
