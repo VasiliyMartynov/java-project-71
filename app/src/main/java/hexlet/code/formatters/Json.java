@@ -11,6 +11,19 @@ public class Json {
     public static String getJson(Map<String, Object> map1,
                              Map<String, Object> map2,
                              TreeSet<String> uniqueKeys) throws JsonProcessingException {
+        map1.entrySet()
+                .forEach(e -> {
+                    if (e.getValue() == null) {
+                        e.setValue("null");
+                    }
+                });
+        map2.entrySet()
+                .forEach(e -> {
+                    if (e.getValue() == null) {
+                        e.setValue("null");
+                    }
+
+                });
         ObjectMapper objectMapper = new ObjectMapper();
         StringBuilder view = new StringBuilder();
         view.append("{");

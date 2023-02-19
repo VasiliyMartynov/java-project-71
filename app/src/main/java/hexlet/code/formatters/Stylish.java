@@ -8,6 +8,20 @@ public class Stylish {
     public static String getStylish(Map<String, Object> map1,
                              Map<String, Object> map2,
                              TreeSet<String> uniqueKeys) {
+        map1.entrySet()
+                .forEach(e -> {
+                    if (e.getValue() == null) {
+                        e.setValue("null");
+                    }
+                });
+        map2.entrySet()
+                .forEach(e -> {
+                    if (e.getValue() == null) {
+                        e.setValue("null");
+                    }
+
+                });
+
         StringBuilder view = new StringBuilder();
         view.append("{\n");
         for (String key : uniqueKeys) {

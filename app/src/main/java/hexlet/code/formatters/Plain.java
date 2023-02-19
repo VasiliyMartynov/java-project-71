@@ -15,11 +15,27 @@ public class Plain {
                     if (e.getValue() instanceof List<?> || e.getValue() instanceof Map<?, ?>) {
                         e.setValue("[complex value]");
                     }
+                    if (e.getValue() == null) {
+                        e.setValue("null");
+                    }
+                    if (e.getValue() instanceof String
+                            && !e.getValue().equals("null")
+                            && !e.getValue().equals("[complex value]")) {
+                        e.setValue("'" + e.getValue() + "'");
+                    }
                 });
         map2.entrySet()
                 .forEach(e -> {
                     if (e.getValue() instanceof List<?> || e.getValue() instanceof Map<?, ?>) {
                         e.setValue("[complex value]");
+                    }
+                    if (e.getValue() == null) {
+                        e.setValue("null");
+                    }
+                    if (e.getValue() instanceof String
+                            && !e.getValue().equals("null")
+                            && !e.getValue().equals("[complex value]")) {
+                        e.setValue("'" + e.getValue() + "'");
                     }
                 });
         view.append("{\n");
@@ -46,11 +62,11 @@ public class Plain {
                 view
                         .append("Property '")
                         .append(key)
-                        .append("' was updated. From '")
+                        .append("' was updated. From ")
                         .append(map1.get(key).toString())
-                        .append("' to '")
+                        .append(" to ")
                         .append(map2.get(key).toString())
-                        .append("'\n");
+                        .append("\n");
                 //if value was unchanged
                 //do nothing
             }
