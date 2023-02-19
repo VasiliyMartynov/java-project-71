@@ -1,70 +1,62 @@
 package hexlet.code.formatters;
 
-import java.util.Map;
-import java.util.TreeSet;
+import hexlet.code.Node;
+
+import java.util.List;
+
+import static hexlet.code.Node.NodeStatus.changed;
+import static hexlet.code.Node.NodeStatus.added;
+import static hexlet.code.Node.NodeStatus.deleted;
+import static hexlet.code.Node.NodeStatus.unchanged;
+
 
 public class Stylish {
 
-    public static String getStylish(Map<String, Object> map1,
-                             Map<String, Object> map2,
-                             TreeSet<String> uniqueKeys) {
-        map1.entrySet()
-                .forEach(e -> {
-                    if (e.getValue() == null) {
-                        e.setValue("null");
-                    }
-                });
-        map2.entrySet()
-                .forEach(e -> {
-                    if (e.getValue() == null) {
-                        e.setValue("null");
-                    }
-
-                });
-
+    public static String getStylish(List<Node> nodes) {
         StringBuilder view = new StringBuilder();
         view.append("{\n");
-        for (String key : uniqueKeys) {
-
+        for (Node e : nodes) {
+            Node.NodeStatus status = e.getStatus();
+            String key = e.getData().getKey();
+            Object data = e.getData().getValue();
+            Object changedValue = e.getChangedValue();
             //value  added
-            if (map2.containsKey(key) && !map1.containsKey(key)) {
+            if (status.equals(added)) {
                 view
                         .append("  + ")
                         .append(key)
                         .append(": ")
-                        .append(map2.get(key).toString())
+                        .append(data)
                         .append("\n");
                 //value was deleted
-            } else if (map1.containsKey(key) && !map2.containsKey(key)) {
+            } else if (status.equals(deleted)) {
                 view
                         .append("  - ")
                         .append(key)
                         .append(": ")
-                        .append(map1.get(key).toString())
+                        .append(data)
                         .append("\n");
                 //value was changed
-            } else if (map1.containsKey(key) && map2.containsKey(key)
-                    && !map1.get(key).equals(map2.get(key))) {
+            } else if (status.equals(changed)) {
                 view
                         .append("  - ")
                         .append(key)
                         .append(": ")
-                        .append(map1.get(key).toString())
+                        .append(data)
                         .append("\n");
                 view
                         .append("  + ")
                         .append(key)
                         .append(": ")
-                        .append(map2.get(key).toString())
+                        .append(changedValue)
                         .append("\n");
                 //value was unchanged
-            } else if (map1.containsKey(key) && map2.containsKey(key)
-                    && map1.get(key).equals(map2.get(key))) {
+            } else if (status.equals(unchanged)) {
                 view
                         .append("    ")
                         .append(key)
                         .append(": ")
-                        .append(map1.get(key).toString())
+                        .append(data)
                         .append("\n");
             }
         }
