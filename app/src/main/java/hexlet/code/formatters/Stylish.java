@@ -47,7 +47,7 @@ public class Stylish {
             } else if (map1.containsKey(key) && map2.containsKey(key)
                     && map1.get(key).equals(map2.get(key))) {
                 view
-                        .append("  ")
+                        .append("    ")
                         .append(key)
                         .append(": ")
                         .append(map1.get(key).toString())
