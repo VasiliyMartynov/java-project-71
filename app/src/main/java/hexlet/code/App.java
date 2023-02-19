@@ -14,7 +14,12 @@ public class App implements Callable<Integer> {
             paramLabel = "format",
             defaultValue = "stylish",
             description = "output format [default: ${DEFAULT-VALUE}]")
-    String format;
+    static
+
+        String format;
+    public static String getFormat() {
+        return format;
+    }
 
     @Parameters(paramLabel = "filePath1", description = "path to first file")
     String filePath1;
