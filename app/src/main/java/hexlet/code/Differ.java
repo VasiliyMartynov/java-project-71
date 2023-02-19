@@ -12,9 +12,6 @@ public class Differ {
         var file1 = parse(filePath1);
         var file2 = parse(filePath2);
         TreeSet<String> keys = getKeys(file1, file2);
-        if (format == null) {
-            generate(filePath1, filePath2);
-        }
         return getView(file1, file2, keys, format);
     }
 
@@ -22,7 +19,7 @@ public class Differ {
         var file1 = parse(filePath1);
         var file2 = parse(filePath2);
         TreeSet<String> keys = getKeys(file1, file2);
-        return getView(file1, file2, keys);
+        return getView(file1, file2, keys, "stylish");
     }
 
     public static TreeSet<String> getKeys(Map<String, Object> data1, Map<String, Object> data2) {

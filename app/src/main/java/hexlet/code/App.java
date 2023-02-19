@@ -14,12 +14,8 @@ public class App implements Callable<Integer> {
             paramLabel = "format",
             defaultValue = "stylish",
             description = "output format [default: ${DEFAULT-VALUE}]")
-    static
 
-        String format;
-    public static String getFormat() {
-        return format;
-    }
+    String format;
 
     @Parameters(paramLabel = "filePath1", description = "path to first file")
     String filePath1;
@@ -29,11 +25,7 @@ public class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        if (format.equals("stylish") || format == null) {
-            System.out.println(Differ.generate(filePath1, filePath2));
-        } else {
-            System.out.println(Differ.generate(filePath1, filePath2, format));
-        }
+        System.out.println(Differ.generate(filePath1, filePath2, format));
         return 0;
     }
     public static void main(String[] args) {
