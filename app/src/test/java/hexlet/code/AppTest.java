@@ -9,7 +9,7 @@ import static hexlet.code.Differ.generate;
 public class AppTest {
 
     @Test
-    public void differJSONTestOK() throws Exception {
+    public void differJSONTestOKStylish() throws Exception {
         String expected = """
                 {
                     chars1: [a, b, c]
@@ -45,7 +45,7 @@ public class AppTest {
 
     }
     @Test
-    public void differJSONFirstFileIsEmpty() throws Exception {
+    public void differJSONFirstFileIsEmptyStylish() throws Exception {
         String expected = """
                 {
                   + chars1: [a, b, c]
@@ -69,7 +69,7 @@ public class AppTest {
 
     }
     @Test
-    public void differJSONSecondFileIsEmpty() throws Exception {
+    public void differJSONSecondFileIsEmptyStylish() throws Exception {
         String expected = """
                 {
                   - chars1: [a, b, c]
@@ -92,7 +92,7 @@ public class AppTest {
 
     }
     @Test
-    public void differJSONBothFilesIsEmpty() throws Exception {
+    public void differJSONBothFilesIsEmptyStylish() throws Exception {
         String expected = """
                 {
                 }""";
@@ -103,7 +103,7 @@ public class AppTest {
 
     }
     @Test
-    public void differYAMLTestOK() throws Exception {
+    public void differYAMLTestOKStylish() throws Exception {
         String expected = """
                 {
                     chars1: [a, b, c]
@@ -139,7 +139,7 @@ public class AppTest {
 
     }
     @Test
-    public void differYAMLFirstFileIsEmpty() throws Exception {
+    public void differYAMLFirstFileIsEmptyStylish() throws Exception {
         String expected = """
                     {
                       + chars1: [a, b, c]
@@ -163,7 +163,7 @@ public class AppTest {
 
     }
     @Test
-    public void differYAMLSecondFileIsEmpty() throws Exception {
+    public void differYAMLSecondFileIsEmptyStylish() throws Exception {
         String expected = """
                 {
                   - chars1: [a, b, c]
@@ -186,7 +186,7 @@ public class AppTest {
 
     }
     @Test
-    public void differYAMLBothFilesIsEmpty() throws Exception {
+    public void differYAMLBothFilesIsEmptyStylish() throws Exception {
         String expected = """
                 {
                 }""";
@@ -199,7 +199,6 @@ public class AppTest {
     @Test
     public void differJSONTestOkPlain() throws Exception {
         String expected = """
-                {
                 Property 'chars2' was updated. From [complex value] to false
                 Property 'checked' was updated. From false to true
                 Property 'default' was updated. From null to [complex value]
@@ -212,42 +211,40 @@ public class AppTest {
                 Property 'obj1' was added with value: [complex value]
                 Property 'setting1' was updated. From 'Some value' to 'Another value'
                 Property 'setting2' was updated. From 200 to 300
-                Property 'setting3' was updated. From true to 'none'
-                }""";
+                Property 'setting3' was updated. From true to 'none'""";
         Path resourceDirectory = Paths.get("src", "test", "resources");
         String absolutePath = resourceDirectory.toFile().getAbsolutePath();
         String actual = generate(absolutePath
                 + "/correctFile1.json", absolutePath
                 + "/correctFile2.json", "plain");
         assertEquals(expected, actual);
-
     }
-//    @Test
-//    public void differJSONTestOkJSON() throws Exception {
-//        String expected = "\"{unchanged:{chars1,[a, b, c]},"
-//                + "changed:{chars2,false},"
-//                + "changed:{checked,true},"
-//                + "changed:{default,[value1, value2]},"
-//                + "changed:{id,null},deleted:{key1,value1},"
-//                + "added:{key2,value2},"
-//                + "unchanged:{numbers1,[1, 2, 3, 4]},"
-//                + "changed:{numbers2,[22, 33, 44, 55]},"
-//                + "deleted:{numbers3,[3, 4, 5]},"
-//                + "added:{numbers4,[4, 5, 6]},"
-//                + "added:{obj1,{nestedKey=value, isNested=true}},"
-//                + "changed:{setting1,Another value},"
-//                + "changed:{setting2,300},"
-//                + "changed:{setting3,none}}\"";
-//        Path resourceDirectory = Paths.get("src", "test", "resources");
-//        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-//        String actual = generate(absolutePath
-//                + "/correctFile1.json", absolutePath
-//                + "/correctFile2.json", "json");
-//        assertEquals(expected, actual);
-//
-//    }
+////    @Test
+////    public void differJSONTestOkJSON() throws Exception {
+////        String expected = "\"{unchanged:{chars1,[a, b, c]},"
+////                + "changed:{chars2,false},"
+////                + "changed:{checked,true},"
+////                + "changed:{default,[value1, value2]},"
+////                + "changed:{id,null},deleted:{key1,value1},"
+////                + "added:{key2,value2},"
+////                + "unchanged:{numbers1,[1, 2, 3, 4]},"
+////                + "changed:{numbers2,[22, 33, 44, 55]},"
+////                + "deleted:{numbers3,[3, 4, 5]},"
+////                + "added:{numbers4,[4, 5, 6]},"
+////                + "added:{obj1,{nestedKey=value, isNested=true}},"
+////                + "changed:{setting1,Another value},"
+////                + "changed:{setting2,300},"
+////                + "changed:{setting3,none}}\"";
+////        Path resourceDirectory = Paths.get("src", "test", "resources");
+////        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+////        String actual = generate(absolutePath
+////                + "/correctFile1.json", absolutePath
+////                + "/correctFile2.json", "json");
+////        assertEquals(expected, actual);
+////
+////    }
     @Test
-    public void differFormatNull() throws Exception {
+    public void differFormatNullStylish() throws Exception {
         String expected = """
                 {
                     chars1: [a, b, c]

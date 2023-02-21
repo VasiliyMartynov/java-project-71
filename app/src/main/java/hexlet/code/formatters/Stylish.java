@@ -4,10 +4,10 @@ import hexlet.code.Node;
 
 import java.util.List;
 
-import static hexlet.code.Node.NodeStatus.changed;
-import static hexlet.code.Node.NodeStatus.added;
-import static hexlet.code.Node.NodeStatus.deleted;
-import static hexlet.code.Node.NodeStatus.unchanged;
+import static hexlet.code.Node.NodeStatus.CHANGED;
+import static hexlet.code.Node.NodeStatus.ADDED;
+import static hexlet.code.Node.NodeStatus.DELETED;
+import static hexlet.code.Node.NodeStatus.UNCHANGED;
 
 
 public class Stylish {
@@ -17,11 +17,10 @@ public class Stylish {
         view.append("{\n");
         for (Node e : nodes) {
             Node.NodeStatus status = e.getStatus();
-            String key = e.getData().getKey();
-            Object data = e.getData().getValue();
-            Object changedValue = e.getChangedValue();
+            String key = e.getKey();
+            Object data = e.getData();
             //value  added
-            if (status.equals(added)) {
+            if (status.equals(ADDED)) {
                 view
                         .append("  + ")
                         .append(key)
@@ -29,7 +28,7 @@ public class Stylish {
                         .append(data)
                         .append("\n");
                 //value was deleted
-            } else if (status.equals(deleted)) {
+            } else if (status.equals(DELETED)) {
                 view
                         .append("  - ")
                         .append(key)
@@ -37,7 +36,7 @@ public class Stylish {
                         .append(data)
                         .append("\n");
                 //value was changed
-            } else if (status.equals(changed)) {
+            } else if (status.equals(CHANGED)) {
                 view
                         .append("  - ")
                         .append(key)
@@ -48,10 +47,10 @@ public class Stylish {
                         .append("  + ")
                         .append(key)
                         .append(": ")
-                        .append(changedValue)
+                        .append(e.getChangedData())
                         .append("\n");
                 //value was unchanged
-            } else if (status.equals(unchanged)) {
+            } else if (status.equals(UNCHANGED)) {
                 view
                         .append("    ")
                         .append(key)

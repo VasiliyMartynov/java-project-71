@@ -1,92 +1,63 @@
 package hexlet.code;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.Map;
 import java.util.List;
-import java.util.TreeSet;
 import java.util.ArrayList;
+import java.util.TreeSet;
+import static hexlet.code.FileOperations.mapper;
 
 public class Parser {
-    static Map<String, Object> parseFile(String filePath) throws Exception {
-        String fileExtension = getFileExtension(filePath);
-        ObjectMapper mapper = getMapper(fileExtension);
-        assert mapper != null;
-        Map<String, Object> result = mapper.readValue(getFileData(filePath), new TypeReference<>() { });
-        result.entrySet().stream()
-                .forEach(e -> {
-                    if (e.getValue() == null) {
-                        e.setValue("null");
-                    }
-                });
-        return result;
+    public static ObjectNode parse(String fileData) throws Exception {
+        //System.out.println("parsed node " + mapper.readTree(fileData));
+        return (ObjectNode) mapper.readTree(fileData);
     }
 
-    static List<Node> createListOfNodes(Map<String, Object> map1, Map<String, Object> map2, TreeSet<String> keys) {
+    static List<Node> generateDiff(ObjectNode node1, ObjectNode node2) {
         List<Node> nodes = new ArrayList<>();
-        //value  added
-        for (String key : keys) {
+        var map1 = nodeToMap(node1);
+        var map2 = nodeToMap(node2);
+        var keys = getKeys(map1, map2);
 
+        for (String key : keys) {
                 //value  added
             if (map2.containsKey(key) && !map1.containsKey(key)) {
-                nodes.add(new Node(Node.NodeStatus.added, Map.entry(key, map2.get(key))));
+                nodes.add(new Node(Node.NodeStatus.ADDED, key, map2.get(key)));
                 //value was deleted
             } else if (map1.containsKey(key) && !map2.containsKey(key)) {
-                nodes.add(new Node(Node.NodeStatus.deleted, Map.entry(key, map1.get(key))));
+                nodes.add(new Node(Node.NodeStatus.DELETED, key, map1.get(key)));
                 //value was changed
             } else if (map1.containsKey(key)
                     && map2.containsKey(key)
                     && !map1.get(key).equals(map2.get(key))) {
-                nodes.add(new Node(Node.NodeStatus.changed, Map.entry(key, map1.get(key)), map2.get(key)));
-                //nodes.add(new Node(Node.NodeStatus.changedPlus, Map.entry(key, map2.get(key))));
+                nodes.add(new Node(Node.NodeStatus.CHANGED,
+                                key, map1.get(key), map2.get(key)));
                 //value was unchanged
             } else if (map1.containsKey(key)
                     && map2.containsKey(key)
                     && map1.get(key).equals(map2.get(key))) {
-                nodes.add(new Node(Node.NodeStatus.unchanged, Map.entry(key, map1.get(key))));
+                nodes.add(new Node(Node.NodeStatus.UNCHANGED, key, map1.get(key)));
             }
         }
         return nodes;
     }
 
-    public static TreeSet<String> getKeys(Map<String, Object> data1, Map<String, Object> data2) {
-        TreeSet<String> keysOfMaps = new TreeSet<>();
-        keysOfMaps.addAll(data1.keySet());
-        keysOfMaps.addAll(data2.keySet());
-        return keysOfMaps;
+    public static TreeSet<String> getKeys(Map<String, Object>  map1, Map<String, Object>  map2) {
+
+        TreeSet<String> keys = new TreeSet<>();
+        keys.addAll(map1.keySet());
+        keys.addAll(map2.keySet());
+        return keys;
     }
 
-    static ObjectMapper getMapper(String s) {
-        if (s.equals("json")) {
-            return new ObjectMapper();
-        } else if (s.equals("yaml")) {
-            return new YAMLMapper();
-        }
-        return null;
-    }
-
-    static String getFileData(String filepath) throws Exception {
-        Path path = Paths.get(filepath).toAbsolutePath().normalize();
-        if (!Files.exists(path)) {
-            throw new Exception("File '" + path + "' does not exist");
-        }
-
-        return Files.readString(path);
-    }
-
-    static String getFileExtension(String filePath) {
-        int i = filePath.lastIndexOf('.');
-        String extension = null;
-        if (i > 0) {
-            extension = filePath.substring(i + 1);
-        }
-        return extension;
+    private static Map<String, Object> nodeToMap(ObjectNode node) {
+        Map<String, Object> result = mapper.convertValue(node, new TypeReference<>() { });
+        result.entrySet().forEach(e -> {
+            if (e.getValue() == null) {
+                e.setValue("null");
+            }
+        });
+        return result;
     }
 }
-
-

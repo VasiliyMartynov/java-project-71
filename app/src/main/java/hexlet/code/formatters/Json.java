@@ -1,29 +1,16 @@
-//package hexlet.code.formatters;
-//
-//import com.fasterxml.jackson.core.JsonProcessingException;
+package hexlet.code.formatters;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 //import com.fasterxml.jackson.databind.ObjectMapper;
-//import hexlet.code.Node;
-//
-//import java.util.List;
+import hexlet.code.Node;
+
+import java.util.List;
 //import java.util.Map;
 //import java.util.TreeSet;
-//
-//public class Json {
-//
-//    public static String getJson(List<Node> nodes) throws JsonProcessingException {
-//        map1.entrySet()
-//                .forEach(e -> {
-//                    if (e.getValue() == null) {
-//                        e.setValue("null");
-//                    }
-//                });
-//        map2.entrySet()
-//                .forEach(e -> {
-//                    if (e.getValue() == null) {
-//                        e.setValue("null");
-//                    }
-//
-//                });
+
+public class Json {
+
+    public static String getJson(List<Node> nodes) throws JsonProcessingException {
 //        ObjectMapper objectMapper = new ObjectMapper();
 //        StringBuilder view = new StringBuilder();
 //        view.append("{");
@@ -69,5 +56,6 @@
 //        view.append("}");
 //        String jsonString = view.toString().replace("},}", "}}");
 //        return objectMapper.writeValueAsString(jsonString);
-//    }
-//}
+        return "";
+    }
+}

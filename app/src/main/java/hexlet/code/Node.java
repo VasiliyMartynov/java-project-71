@@ -1,36 +1,44 @@
 package hexlet.code;
 
-import java.util.Map;
-
 public class Node {
 
     public enum NodeStatus {
-        added, deleted, changed, unchanged
+        ADDED, DELETED, CHANGED, UNCHANGED
     }
-    private NodeStatus status;
-    private Map.Entry<String, Object> data;
 
-    private Object changedValue;
+    private final NodeStatus status;
+    private final String key;
+    private final Object data;
+    private Object changedData;
 
-    Node(NodeStatus status, Map.Entry<String, Object> data, Object changedValue) {
+    Node(NodeStatus status, String key, Object data, Object changedData) {
+        this.key = key;
         this.status = status;
         this.data = data;
-        this.changedValue = changedValue;
-    }
-    Node(NodeStatus status, Map.Entry<String, Object> data) {
-        this.status = status;
-        this.data = data;
-    }
-    public Map.Entry<String, Object> getData() {
-        return this.data;
+        this.changedData = changedData;
     }
 
-    public Object getChangedValue() {
-        return this.changedValue;
+    Node(NodeStatus status, String key, Object data) {
+        this.status = status;
+        this.key = key;
+        this.data = data;
+    }
+
+    public String getKey() {
+        return this.key;
     }
 
     public NodeStatus getStatus() {
         return this.status;
     }
 
+    public Object getData() {
+        return this.data;
+    }
+
+    public Object getChangedData() {
+        return this.changedData;
+    }
 }
+
+
