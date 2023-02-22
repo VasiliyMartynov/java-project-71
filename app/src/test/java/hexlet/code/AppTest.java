@@ -219,30 +219,35 @@ public class AppTest {
                 + "/correctFile2.json", "plain");
         assertEquals(expected, actual);
     }
-////    @Test
-////    public void differJSONTestOkJSON() throws Exception {
-////        String expected = "\"{unchanged:{chars1,[a, b, c]},"
-////                + "changed:{chars2,false},"
-////                + "changed:{checked,true},"
-////                + "changed:{default,[value1, value2]},"
-////                + "changed:{id,null},deleted:{key1,value1},"
-////                + "added:{key2,value2},"
-////                + "unchanged:{numbers1,[1, 2, 3, 4]},"
-////                + "changed:{numbers2,[22, 33, 44, 55]},"
-////                + "deleted:{numbers3,[3, 4, 5]},"
-////                + "added:{numbers4,[4, 5, 6]},"
-////                + "added:{obj1,{nestedKey=value, isNested=true}},"
-////                + "changed:{setting1,Another value},"
-////                + "changed:{setting2,300},"
-////                + "changed:{setting3,none}}\"";
-////        Path resourceDirectory = Paths.get("src", "test", "resources");
-////        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-////        String actual = generate(absolutePath
-////                + "/correctFile1.json", absolutePath
-////                + "/correctFile2.json", "json");
-////        assertEquals(expected, actual);
-////
-////    }
+    @Test
+    public void differJSONTestOkJSON() throws Exception {
+        String expected = "[{\"status\":\"UNCHANGED\",\"key\":\"chars1\""
+                + ",\"data\":[\"a\",\"b\",\"c\"],\"changedData\":null}"
+                + ",{\"status\":\"CHANGED\",\"key\":\"chars2\",\"data\":[\"d\",\"e\",\"f\"],\"changedData\":false}"
+                + ",{\"status\":\"CHANGED\",\"key\":\"checked\",\"data\":false,\"changedData\":true}"
+                + ",{\"status\":\"CHANGED\",\"key\":\"default\""
+                + ",\"data\":\"null\",\"changedData\":[\"value1\",\"value2\"]}"
+                + ",{\"status\":\"CHANGED\",\"key\":\"id\",\"data\":45,\"changedData\":\"null\"}"
+                + ",{\"status\":\"DELETED\",\"key\":\"key1\",\"data\":\"value1\",\"changedData\":null}"
+                + ",{\"status\":\"ADDED\",\"key\":\"key2\",\"data\":\"value2\",\"changedData\":null}"
+                + ",{\"status\":\"UNCHANGED\",\"key\":\"numbers1\",\"data\":[1,2,3,4],\"changedData\":null}"
+                + ",{\"status\":\"CHANGED\",\"key\":\"numbers2\",\"data\":[2,3,4,5],\"changedData\":[22,33,44,55]}"
+                + ",{\"status\":\"DELETED\",\"key\":\"numbers3\",\"data\":[3,4,5],\"changedData\":null}"
+                + ",{\"status\":\"ADDED\",\"key\":\"numbers4\",\"data\":[4,5,6],\"changedData\":null}"
+                + ",{\"status\":\"ADDED\",\"key\":\"obj1\""
+                + ",\"data\":{\"nestedKey\":\"value\",\"isNested\":true},\"changedData\":null}"
+                + ",{\"status\":\"CHANGED\",\"key\":\"setting1\""
+                + ",\"data\":\"Some value\",\"changedData\":\"Another value\"}"
+                + ",{\"status\":\"CHANGED\",\"key\":\"setting2\",\"data\":200,\"changedData\":300}"
+                + ",{\"status\":\"CHANGED\",\"key\":\"setting3\",\"data\":true,\"changedData\":\"none\"}]";
+        Path resourceDirectory = Paths.get("src", "test", "resources");
+        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+        String actual = generate(absolutePath
+                + "/correctFile1.json", absolutePath
+                + "/correctFile2.json", "json");
+        assertEquals(expected, actual);
+
+    }
     @Test
     public void differFormatNullStylish() throws Exception {
         String expected = """
