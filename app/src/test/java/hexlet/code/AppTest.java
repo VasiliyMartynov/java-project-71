@@ -249,6 +249,26 @@ public class AppTest {
 
     }
     @Test
+    public void differYAMLTestOkYAML() throws Exception {
+        String expected = """
+                - status: "ADDED"
+                  key: "setting1"
+                  data: "Another value"
+                  changedData: null
+                - status: "ADDED"
+                  key: "setting2"
+                  data: 300
+                  changedData: null
+                """;
+        Path resourceDirectory = Paths.get("src", "test", "resources");
+        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+        String actual = generate(absolutePath
+                + "/emptyFile1.yaml", absolutePath
+                + "/correctFile3.yaml", "yaml");
+        assertEquals(expected, actual);
+
+    }
+    @Test
     public void differFormatNullStylish() throws Exception {
         String expected = """
                 {

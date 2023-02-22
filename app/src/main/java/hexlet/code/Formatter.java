@@ -5,6 +5,7 @@ import java.util.List;
 import static hexlet.code.formatters.Json.getJson;
 import static hexlet.code.formatters.Plain.getPlain;
 import static hexlet.code.formatters.Stylish.getStylish;
+import static hexlet.code.formatters.Yaml.getYaml;
 
 public class Formatter {
     public static String getView(List<Node> nodes,
@@ -20,6 +21,10 @@ public class Formatter {
             case "json"  -> {
                 return getJson(nodes);
             }
+            case "yaml"  -> {
+                return getYaml(nodes);
+            }
+
             default -> {
             }
         }
