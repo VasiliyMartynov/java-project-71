@@ -21,7 +21,7 @@ public class Formatter {
             case "json"  -> {
                 return getJson(nodes);
             }
-            case "yaml"  -> {
+            case "yml"  -> {
                 return getYaml(nodes);
             }
 

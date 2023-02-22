@@ -7,6 +7,42 @@ import java.nio.file.Paths;
 import static hexlet.code.Differ.generate;
 
 public class AppTest {
+    @Test
+    public void differYmlTestOKStylish() throws Exception {
+        String expected = """
+                {
+                    chars1: [a, b, c]
+                  - chars2: [d, e, f]
+                  + chars2: false
+                  - checked: false
+                  + checked: true
+                  - default: null
+                  + default: [value1, value2]
+                  - id: 45
+                  + id: null
+                  - key1: value1
+                  + key2: value2
+                    numbers1: [1, 2, 3, 4]
+                  + numbers2: [22, 33, 44, 55]
+                  - numbers2": [2, 3, 4, 5]
+                  - numbers3: [3, 4, 5]
+                  + numbers4: [4, 5, 6]
+                  + obj1: {nestedKey=value, isNested=true}
+                  - setting1: Some value
+                  + setting1: Another value
+                  - setting2: 200
+                  + setting2: 300
+                  - setting3: true
+                  + setting3: none
+                }""";
+        Path resourceDirectory = Paths.get("src", "test", "resources");
+        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+        String actual = generate(absolutePath
+                + "/correctFile1.yml", absolutePath
+                + "/correctFile2.yml", "stylish");
+        assertEquals(expected, actual);
+
+    }
 
     @Test
     public void differJSONTestOKStylish() throws Exception {
@@ -102,44 +138,9 @@ public class AppTest {
         assertEquals(expected, actual);
 
     }
-    @Test
-    public void differYAMLTestOKStylish() throws Exception {
-        String expected = """
-                {
-                    chars1: [a, b, c]
-                  - chars2: [d, e, f]
-                  + chars2: false
-                  - checked: false
-                  + checked: true
-                  - default: null
-                  + default: [value1, value2]
-                  - id: 45
-                  + id: null
-                  - key1: value1
-                  + key2: value2
-                    numbers1: [1, 2, 3, 4]
-                  + numbers2: [22, 33, 44, 55]
-                  - numbers2": [2, 3, 4, 5]
-                  - numbers3: [3, 4, 5]
-                  + numbers4: [4, 5, 6]
-                  + obj1: {nestedKey=value, isNested=true}
-                  - setting1: Some value
-                  + setting1: Another value
-                  - setting2: 200
-                  + setting2: 300
-                  - setting3: true
-                  + setting3: none
-                }""";
-        Path resourceDirectory = Paths.get("src", "test", "resources");
-        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-        String actual = generate(absolutePath
-                + "/correctFile1.yaml", absolutePath
-                + "/correctFile2.yaml", "stylish");
-        assertEquals(expected, actual);
 
-    }
     @Test
-    public void differYAMLFirstFileIsEmptyStylish() throws Exception {
+    public void differYmlFirstFileIsEmptyStylish() throws Exception {
         String expected = """
                     {
                       + chars1: [a, b, c]
@@ -158,12 +159,12 @@ public class AppTest {
                     }""";
         Path resourceDirectory = Paths.get("src", "test", "resources");
         String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-        String actual = generate(absolutePath + "/emptyFile1.yaml", absolutePath + "/correctFile2.yaml", "stylish");
+        String actual = generate(absolutePath + "/emptyFile1.yml", absolutePath + "/correctFile2.yml", "stylish");
         assertEquals(expected, actual);
 
     }
     @Test
-    public void differYAMLSecondFileIsEmptyStylish() throws Exception {
+    public void differYmlSecondFileIsEmptyStylish() throws Exception {
         String expected = """
                 {
                   - chars1: [a, b, c]
@@ -181,18 +182,18 @@ public class AppTest {
                 }""";
         Path resourceDirectory = Paths.get("src", "test", "resources");
         String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-        String actual = generate(absolutePath + "/correctFile1.yaml", absolutePath + "/emptyFile1.yaml", "stylish");
+        String actual = generate(absolutePath + "/correctFile1.yml", absolutePath + "/emptyFile1.yml", "stylish");
         assertEquals(expected, actual);
 
     }
     @Test
-    public void differYAMLBothFilesIsEmptyStylish() throws Exception {
+    public void differYmlBothFilesIsEmptyStylish() throws Exception {
         String expected = """
                 {
                 }""";
         Path resourceDirectory = Paths.get("src", "test", "resources");
         String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-        String actual = generate(absolutePath + "/emptyFile1.yaml", absolutePath + "/emptyFile2.yaml", "stylish");
+        String actual = generate(absolutePath + "/emptyFile1.yml", absolutePath + "/emptyFile2.yml", "stylish");
         assertEquals(expected, actual);
 
     }
@@ -249,7 +250,7 @@ public class AppTest {
 
     }
     @Test
-    public void differYAMLTestOkYAML() throws Exception {
+    public void differYmlTestOkYml() throws Exception {
         String expected = """
                 - status: "ADDED"
                   key: "setting1"
@@ -263,8 +264,8 @@ public class AppTest {
         Path resourceDirectory = Paths.get("src", "test", "resources");
         String absolutePath = resourceDirectory.toFile().getAbsolutePath();
         String actual = generate(absolutePath
-                + "/emptyFile1.yaml", absolutePath
-                + "/correctFile3.yaml", "yaml");
+                + "/emptyFile1.yml", absolutePath
+                + "/correctFile3.yml", "yml");
         assertEquals(expected, actual);
 
     }

@@ -17,6 +17,7 @@ public class FileOperations {
         Path path = getPath(filepath);
         String content = Files.readString(path);
         String fileExtension = getFileExtension(filepath);
+        System.out.println();
         mapper = getFileMapper(fileExtension);
         return parse(content);
     }
@@ -39,7 +40,7 @@ public class FileOperations {
     }
 
     public static ObjectMapper getFileMapper(String fileExtension) {
-        if (fileExtension.equals("yaml")) {
+        if (fileExtension.equals("yml")) {
             return new YAMLMapper();
         }
         return new ObjectMapper();
