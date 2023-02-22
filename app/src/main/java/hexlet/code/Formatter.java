@@ -24,7 +24,6 @@ public class Formatter {
             case "yml"  -> {
                 return getYaml(nodes);
             }
-
             default -> {
             }
         }
