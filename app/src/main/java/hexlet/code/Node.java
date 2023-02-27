@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public class Node {
+public final class Node {
 
     public enum NodeStatus {
         ADDED, DELETED, CHANGED, UNCHANGED
@@ -11,17 +11,18 @@ public class Node {
     private final Object data;
     private Object changedData;
 
-    Node(NodeStatus status, String key, Object data, Object changedData) {
-        this.key = key;
-        this.status = status;
-        this.data = data;
-        this.changedData = changedData;
+
+    Node(NodeStatus nodeStatus, String nodeKey, Object nodeData, Object nodeChangedData) {
+        this.key = nodeKey;
+        this.status = nodeStatus;
+        this.data = nodeData;
+        this.changedData = nodeChangedData;
     }
 
-    Node(NodeStatus status, String key, Object data) {
-        this.status = status;
-        this.key = key;
-        this.data = data;
+    Node(NodeStatus nodeStatus, String nodeKey, Object nodeData) {
+        this.key = nodeKey;
+        this.status = nodeStatus;
+        this.data = nodeData;
     }
 
     public String getKey() {

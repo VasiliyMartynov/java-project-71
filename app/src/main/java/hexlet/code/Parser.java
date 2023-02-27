@@ -8,7 +8,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import java.util.Map;
 
 public class Parser {
-    static ObjectMapper mapper = null;
+    private static ObjectMapper mapper = null;
     public static ObjectNode parse(String fileData, String fileExtension) throws Exception {
         mapper = getFileMapper(fileExtension);
         return (ObjectNode) mapper.readTree(fileData);
