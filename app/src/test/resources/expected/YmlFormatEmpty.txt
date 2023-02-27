@@ -1,6 +1,0 @@
-{
-  + key2: value2
-  + setting1: Another value
-  + setting2: 300
-  + setting3: none
-}
