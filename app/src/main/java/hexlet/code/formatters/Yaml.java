@@ -7,12 +7,10 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
 import hexlet.code.Node;
 import java.util.List;
 
-import static hexlet.code.FileOperations.mapper;
-
 public class Yaml {
 
     public static String getYaml(List<Node> nodes) throws JsonProcessingException {
-        mapper = new ObjectMapper(new YAMLFactory().disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER));
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory().disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER));
         return mapper.writeValueAsString(nodes);
     }
 }

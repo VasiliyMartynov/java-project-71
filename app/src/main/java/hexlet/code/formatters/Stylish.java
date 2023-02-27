@@ -1,14 +1,11 @@
 package hexlet.code.formatters;
 
 import hexlet.code.Node;
-
 import java.util.List;
-
 import static hexlet.code.Node.NodeStatus.CHANGED;
 import static hexlet.code.Node.NodeStatus.ADDED;
 import static hexlet.code.Node.NodeStatus.DELETED;
 import static hexlet.code.Node.NodeStatus.UNCHANGED;
-
 
 public class Stylish {
 

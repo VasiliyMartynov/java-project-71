@@ -2,7 +2,7 @@ package hexlet.code;
 
 import static hexlet.code.FileOperations.getData;
 import static hexlet.code.Formatter.getView;
-import static hexlet.code.Parser.generateDiff;
+import static hexlet.code.DifferLogic.generateDiff;
 
 public class Differ {
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
@@ -11,7 +11,6 @@ public class Differ {
         var diff =  generateDiff(map1, map2);
 
         return getView(diff, format);
-        //return "";
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {
