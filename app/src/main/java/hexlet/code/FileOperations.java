@@ -1,14 +1,14 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import static hexlet.code.Parser.parse;
 
 public class FileOperations {
 
-    public static ObjectNode getData(String filepath) throws Exception {
+    public static Map<String, Object> getData(String filepath) throws Exception {
         String fileExtension = getFileExtension(filepath);
         String fileContent = readFile(filepath);
         return parse(fileContent, fileExtension);

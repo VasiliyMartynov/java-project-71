@@ -14,8 +14,8 @@ public class Plain {
         for (Node e : nodes) {
             Node.NodeStatus status = e.getStatus();
             String key = e.getKey();
-            String data = checkValue(e.getData());
-            String changedData = checkValue(e.getChangedData());
+            String data = convertObject(e.getData());
+            String changedData = convertObject(e.getChangedData());
             if (status.equals(ADDED)) {
                 view
                         .append("Property '")
@@ -44,7 +44,7 @@ public class Plain {
         return view.substring(0, view.toString().length() - 1);
     }
 
-    private static String checkValue(Object o) {
+    private static String convertObject(Object o) {
         String s;
         if (o == null) {
             return null;

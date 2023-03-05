@@ -7,9 +7,8 @@ import static java.nio.file.Files.readString;
 
 public class TestUtils {
     public static String getAbsolutePath(String fileName) {
-        Path resourceDirectory = Paths.get("src", "test", "resources");
-        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-        return absolutePath + "/" + fileName;
+        Path resourceDirectory = Paths.get("src", "test", "resources", fileName);
+        return resourceDirectory.toFile().getAbsolutePath();
     }
 
     public static String getExpectedFile(String fileName) throws IOException {

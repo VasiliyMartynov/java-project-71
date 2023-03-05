@@ -1,22 +1,17 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
-import static hexlet.code.Parser.nodeToMap;
 
 public class DifferLogic {
 
-    public static List<Node> generateDiff(ObjectNode node1, ObjectNode node2) {
+    public static List<Node> generateDiff(Map<String, Object> map1, Map<String, Object> map2) {
         List<Node> nodes = new ArrayList<>();
-        var map1 = nodeToMap(node1);
-        var map2 = nodeToMap(node2);
-        var keys = getKeys(map1, map2);
-
+        var keys = getKeys(fixNulls(map1), fixNulls(map2));
         for (String key : keys) {
-            //value  added
+                //value  added
             if (map2.containsKey(key) && !map1.containsKey(key)) {
                 nodes.add(new Node(Node.NodeStatus.ADDED, key, map2.get(key)));
                 //value was deleted
@@ -46,5 +41,12 @@ public class DifferLogic {
         return keys;
     }
 
-
+    private static Map<String, Object> fixNulls(Map<String, Object> map) {
+        map.entrySet().forEach(e -> {
+            if (e.getValue() == null) {
+                e.setValue("null");
+            }
+        });
+        return map;
+    }
 }

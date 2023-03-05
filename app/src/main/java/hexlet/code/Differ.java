@@ -6,10 +6,9 @@ import static hexlet.code.DifferLogic.generateDiff;
 
 public class Differ {
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
-        var map1 = getData(filePath1);
-        var map2 = getData(filePath2);
-        var diff =  generateDiff(map1, map2);
-
+        var file1Data = getData(filePath1);
+        var file2Data = getData(filePath2);
+        var diff =  generateDiff(file1Data, file2Data);
         return getView(diff, format);
     }
 
