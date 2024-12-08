@@ -1,4 +1,4 @@
-# README.md
+# Вычислитель отличий
 [![Actions Status](https://github.com/VasiliyMartynov/java-project-71/workflows/hexlet-check/badge.svg)](https://github.com/VasiliyMartynov/java-project-71/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2407cace64ecaa7a37c7/maintainability)](https://codeclimate.com/github/VasiliyMartynov/java-project-71/maintainability)
 [![Java CI](https://github.com/VasiliyMartynov/java-project-71/actions/workflows/check.yml/badge.svg)](https://github.com/VasiliyMartynov/java-project-71/actions/workflows/check.yml)
@@ -13,7 +13,7 @@
 Генерация отчета в виде plain text, stylish и json
 В рамках данного проекта выполнена обучение по настройке окружения, ознакомлению с Gradle, линтером.
 ### Цель проекта
-Изучение структур данных, знакомство с форматами JSON, YML, основы тестировая ПО и непрерывной интеграцией (CI
+Изучение структур данных, знакомство с форматами JSON, YML, основы тестировая ПО и непрерывной интеграцией (CI)
 ### Список инструментов
 IDE IntelliJ IDEA,
 Java 17,
@@ -22,8 +22,9 @@ checkstyle.sourceforge.io,
 CodeClimate,
 Make,
 Markdown,
-JUnit
-PicoCLI
+JUnit,
+PicoCLI,
+jackson.core
 ### makefile commands
 ### START
 ```sh
