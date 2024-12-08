@@ -7,7 +7,6 @@ import java.util.Map;
 import static hexlet.code.Parser.parse;
 
 public class FileOperations {
-
     public static Map<String, Object> getData(String filepath) throws Exception {
         String fileExtension = getFileExtension(filepath);
         String fileContent = readFile(filepath);
